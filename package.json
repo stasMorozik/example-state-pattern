@@ -18,8 +18,11 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@sweet-monads/either": "^3.0.1",
+    "bootstrap": "^5.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "xstate": "^4.33.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
