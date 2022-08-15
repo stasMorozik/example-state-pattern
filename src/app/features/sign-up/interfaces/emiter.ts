@@ -1,6 +1,8 @@
 import { Error } from '../../common/error';
-import { Event } from '../../common/event';
+import { CheckedSecurityCodeEvent } from '../events/checked-security-code-event';
+import { ConfrimedEmailEvent } from '../events/confrimed-email-event';
+import { RegistredUserEvent } from '../events/registred-user-event';
 
 export interface Emiter {
-  emit(e: Error | Event): void
+  emit(e: Error | ConfrimedEmailEvent | CheckedSecurityCodeEvent | RegistredUserEvent): void
 }

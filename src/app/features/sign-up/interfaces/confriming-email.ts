@@ -1,6 +1,8 @@
 import { Observable } from "rxjs";
+import { Either } from '@sweet-monads/either';
 import { Email } from "../../common/value-objects/email";
+import { Error } from '../../common/error';
 
 export interface ConfrimingEmail {
-  confirm(email: Email): Observable<boolean> 
+  confirm(email: Email): Observable<Either<Error, true>> 
 }

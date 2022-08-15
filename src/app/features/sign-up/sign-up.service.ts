@@ -1,11 +1,11 @@
 import { ConfrimingEmail } from './interfaces/confriming-email';
 import { Emiter } from './interfaces/emiter';
 import { ValidatingCode } from './interfaces/validating-code';
-import { ConfirmingEmailState } from './confirming-email-state';
-import { CheckingCodeState } from './checking-code-state';
+import { ConfirmingEmailState } from './states/confirming-email-state';
+import { CheckingCodeState } from './states/checking-code-state';
 import { Error } from '../common/error';
 import { Registrating } from './interfaces/registrating';
-import { RegistratingState } from './registrating-state';
+import { RegistratingState } from './states/registrating-state';
 
 export class SignUpService {
   constructor(
