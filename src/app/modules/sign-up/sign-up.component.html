@@ -1,0 +1,82 @@
+<div class="row mt-5 justify-content-center">
+  <div class="col-12 col-lg-6">
+
+    <div class="row justify-content-end">
+      <div class="col-12 col-lg-1 d-flex align-items-center">
+        <div style="height:60px;" class="w-100 d-flex align-items-center justify-content-around flex-lg-column">
+          <div 
+            [ngClass]="{'bg-white': currentState == 'CONFIRMING_EMAIL', 'bg-danger': currentState != 'CONFIRMING_EMAIL'}" 
+            class="bg-white rounded" 
+            style="width:10px;height:10px;"
+          >
+          </div>
+          <div 
+            [ngClass]="{'bg-white': currentState == 'CHECKING_CODE', 'bg-danger': currentState != 'CHECKING_CODE'}"
+            class="rounded" 
+            style="width:10px;height:10px;"
+          >
+          </div>
+          <div 
+            [ngClass]="{'bg-white': currentState == 'REGISTRATING', 'bg-danger': currentState != 'REGISTRATING'}"
+            class="rounded" 
+            style="width:10px;height:10px;"
+          >
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-11">
+        <form 
+          [ngClass]="{'d-block': currentState == 'CONFIRMING_EMAIL', 'd-none': currentState != 'CONFIRMING_EMAIL'}"  
+          class="p-5 bg-white rounded shadow" 
+          [formGroup]="formConfirmingEmail"
+          [@CONFIRMING_EMAIL]="currentState"
+        >
+          <div class="d-flex justify-content-center mb-5"><h5 style="font-weight:600;">Confirm your email address</h5></div>
+          <div class="d-flex mb-5">
+            <app-input-text class="mb-2 w-100 d-felx" formControlName="email" [label]="'Email address'"></app-input-text>
+          </div>
+          <div class="d-flex justify-content-center">
+            <app-button (click)="onConfirmEmail()">Confirm</app-button>
+          </div>
+        </form>
+
+        <form 
+          [ngClass]="{'d-block': currentState == 'CHECKING_CODE', 'd-none': currentState != 'CHECKING_CODE'}"  
+          class="p-5 bg-white rounded shadow" 
+          [formGroup]="formValidatingCode"
+          [@CHECKING_CODE]="currentState"
+        >
+          <div class="d-flex justify-content-center mb-5"><h5 style="font-weight:600;">Enter security code</h5></div>
+          <div class="d-flex mb-5">
+            <app-input-text class="mb-2 w-100 d-felx" formControlName="code" [label]="'Security code'"></app-input-text>
+          </div>
+          <div class="d-flex justify-content-center">
+            <app-button (click)="onCheckCode()">Enter</app-button>
+          </div>
+        </form>
+
+        <form 
+          [ngClass]="{'d-block': currentState == 'REGISTRATING', 'd-none': currentState != 'REGISTRATING'}"  
+          class="p-5 bg-white rounded shadow" 
+          [formGroup]="formRegistrating"
+          [@REGISTRATING]="currentState"
+        >
+          <div class="d-flex justify-content-center mb-5"><h5 style="font-weight:600;">Welcome to sign up</h5></div>
+          <div class="d-flex flex-column mb-5">
+            <app-input-text class="mb-2 w-100 d-block" formControlName="email" [label]="'Email address'"></app-input-text>
+            <app-input-text class="mb-2 w-100 d-block" formControlName="password" [label]="'Password'" [type]="'password'"></app-input-text>
+          </div>
+          <div class="d-flex justify-content-center">
+            <app-button (click)="onSingUp()">Enter</app-button>
+          </div>
+        </form>
+      </div>
+      <div [ngClass]="{'d-block': error != null, 'd-none': error == null}" class="col-12 col-lg-11 mt-2">
+        <div class="p-3 alert alert-danger fw-bold">{{error?.message}}</div>
+      </div>
+      <div [ngClass]="{'d-block': registredevent != null, 'd-none': registredevent == null}" class="col-12 col-lg-11 mt-2">
+        <div class="p-3 alert alert-success fw-bold">Enjoy joining</div>
+      </div>
+    </div>
+  </div>
+</div>

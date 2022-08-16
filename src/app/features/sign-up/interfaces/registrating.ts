@@ -5,5 +5,5 @@ import { Error } from '../../common/error';
 import { Either } from '@sweet-monads/either';
 
 export interface Registrating {
-  registrgy(email: Email, password: Password): Observable<Either<Error, true>>
+  registrgy(email: Email, password: Password): Observable<Either<Error, boolean>>
 }

@@ -101,6 +101,5 @@
         }
       }
     }
-  },
-  "defaultProject": "example-state-pattern"
+  }
 }

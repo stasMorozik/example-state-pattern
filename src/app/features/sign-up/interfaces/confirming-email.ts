@@ -4,5 +4,5 @@ import { Email } from "../../common/value-objects/email";
 import { Error } from '../../common/error';
 
 export interface ConfirmingEmail {
-  confirm(email: Email): Observable<Either<Error, true>> 
+  confirm(email: Email): Observable<Either<Error, boolean>> 
 }
