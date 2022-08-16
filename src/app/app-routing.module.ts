@@ -5,9 +5,16 @@ const routes: Routes = [
   {
     path: 'sign-up',
     loadChildren: () =>
-          import('./modules/sign-up/sign-up.module').then(
-            ({ SignUpModule }) => SignUpModule
-          ),
+      import('./modules/sign-up/sign-up.module').then(
+        ({ SignUpModule }) => SignUpModule
+      )
+  },
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./modules/sign-up/sign-up.module').then(
+        ({ SignUpModule }) => SignUpModule
+      )
   }
 ]
 
