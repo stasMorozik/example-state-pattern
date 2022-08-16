@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { delay, of, Subject, switchMap } from 'rxjs';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { delay, of, Subject, Subscription, switchMap } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckedSecurityCodeEvent } from '../../features/sign-up/events/checked-security-code-event';
 import { ConfrimedEmailEvent } from '../../features/sign-up/events/confrimed-email-event';
@@ -37,7 +37,9 @@ type States = 'CONFIRMING_EMAIL' | 'CHECKING_CODE' | 'REGISTRATING'
     ]),
   ],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
+  sub!: Subscription
+
   formConfirmingEmail!: FormGroup
   formValidatingCode!: FormGroup
   formRegistrating!: FormGroup
@@ -67,7 +69,7 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventSubject$.pipe(
+    this.sub = this.eventSubject$.pipe(
       switchMap(event => {
         if (event instanceof Error) {
           this.error = event
@@ -101,6 +103,10 @@ export class SignUpComponent implements OnInit {
         this.registredevent = null
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe()
   }
 
   onConfirmEmail() {
