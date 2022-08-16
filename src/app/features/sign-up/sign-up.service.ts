@@ -1,4 +1,4 @@
-import { ConfrimingEmail } from './interfaces/confriming-email';
+import { ConfirmingEmail } from './interfaces/confirming-email';
 import { Emiter } from './interfaces/emiter';
 import { ValidatingCode } from './interfaces/validating-code';
 import { ConfirmingEmailState } from './states/confirming-email-state';
@@ -7,10 +7,11 @@ import { Error } from '../common/error';
 import { Registrating } from './interfaces/registrating';
 import { RegistratingState } from './states/registrating-state';
 
+//state machine pattern
 export class SignUpService {
   constructor(
     readonly _emiter: Emiter,
-    readonly _confirmingEmail: ConfrimingEmail,
+    readonly _confirmingEmail: ConfirmingEmail,
     readonly _validatingCode: ValidatingCode,
     readonly _registrating: Registrating,
     public state: 
